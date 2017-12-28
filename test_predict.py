@@ -14,7 +14,7 @@ model.load_weights('unet.hdf5')
 imgs_mask_test = model.predict(imgs_test, verbose=1)
 
 np.save('../results/imgs_mask_test.npy', imgs_mask_test)
-for i in range(imgs.shape[0]):
+for i in range(imgs_mask_test.shape[0]):
     img = imgs[i]
     img = array_to_img(img)
     img.save("../results/%d.jpg"%(i))
