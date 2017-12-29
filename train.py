@@ -8,6 +8,7 @@ from keras.optimizers import *
 from keras.callbacks import ModelCheckpoint, LearningRateScheduler
 from keras import backend as keras
 from data import *
+from optparse import OptionParser
 
 class myUnet(object):
 
@@ -88,7 +89,9 @@ class myUnet(object):
 
 
 	def train(self):
-
+		parser = OptionParser()
+		parser.add_option("--epoch",dest="epoch",help="Number of epoch",default="200")
+		(option,args) = parser.parse_args()
 		print("loading data")
 		imgs_train, imgs_mask_train, imgs_test = self.load_data()
 		print("loading data done")
@@ -100,7 +103,7 @@ class myUnet(object):
 		print('input shape',imgs_train.shape)
 		print('mask shape',imgs_mask_train.shape)
 		print('test shape',imgs_test.shape)
-		model.fit(imgs_train, imgs_mask_train, batch_size=4, epochs=10, verbose=1,validation_split=0.2, shuffle=True, callbacks=[model_checkpoint])
+		model.fit(imgs_train, imgs_mask_train, batch_size=4, epochs=int(option.epoch), verbose=1,validation_split=0.2, shuffle=True, callbacks=[model_checkpoint])
 		
 
 if __name__ == '__main__':
