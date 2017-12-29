@@ -1,4 +1,4 @@
-from unet import *
+from train import *
 from data import *
 
 mydata = dataProcess(512,512)
