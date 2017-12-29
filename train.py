@@ -100,7 +100,7 @@ class myUnet(object):
 		print('input shape',imgs_train.shape)
 		print('mask shape',imgs_mask_train.shape)
 		print('test shape',imgs_test.shape)
-		model.fit(imgs_train, imgs_mask_train, batch_size=4, epochs=100, verbose=1,validation_split=0.2, shuffle=True, callbacks=[model_checkpoint])
+		model.fit(imgs_train, imgs_mask_train, batch_size=4, epochs=10, verbose=1,validation_split=0.2, shuffle=True, callbacks=[model_checkpoint])
 		
 
 if __name__ == '__main__':
